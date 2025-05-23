@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only server.ts",
-    "lint": "eslint . --ext .ts",
+    "lint": "npx eslint . --ext .ts",
     "test": "jest"
   },
   "author": "",
