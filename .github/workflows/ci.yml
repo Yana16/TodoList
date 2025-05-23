@@ -26,6 +26,12 @@ jobs:
       - name: Install backend dependencies
         run: npm install
 
+      - name: Debug ESLint binary (backend)
+        run: |
+          ls -l node_modules/.bin/eslint
+          file node_modules/.bin/eslint || echo "eslint binary not found"
+          ./node_modules/.bin/eslint --version || echo "eslint run failed"
+
       - name: Run backend lint
         run: npm run lint
 
@@ -45,6 +51,12 @@ jobs:
 
       - name: Install frontend dependencies
         run: npm install
+
+      - name: Debug ESLint binary (frontend)
+        run: |
+          ls -l node_modules/.bin/eslint
+          file node_modules/.bin/eslint || echo "eslint binary not found"
+          ./node_modules/.bin/eslint --version || echo "eslint run failed"
 
       - name: Run frontend lint
         run: npm run lint
