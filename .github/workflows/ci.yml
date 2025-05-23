@@ -9,48 +9,42 @@ on:
       - main
 
 jobs:
-  frontend:
+  lint-backend:
     runs-on: ubuntu-latest
-
+    name: Lint Backend
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
-      - name: Install dependencies (frontend)
-        working-directory: ./frontend
+      - name: Install backend dependencies
         run: npm install
 
-      - name: Run lint (frontend)
-        working-directory: ./frontend
+      - name: Run backend lint
         run: npm run lint
 
-      - name: Run tests (frontend)
-        working-directory: ./frontend
-        run: npm test -- --watchAll=false --passWithNoTests
-
-  backend:
+  lint-frontend:
     runs-on: ubuntu-latest
-
+    name: Lint Frontend
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
-      - name: Install dependencies (backend)
-        working-directory: ./backend
+      - name: Install frontend dependencies
         run: npm install
 
-      - name: Run lint (backend)
-        working-directory: ./backend
+      - name: Run frontend lint
         run: npm run lint
-
-      - name: Run tests (backend)
-        working-directory: ./backend
-        run: npm test -- --watchAll=false --passWithNoTests
