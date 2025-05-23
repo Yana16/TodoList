@@ -1,0 +1,19 @@
+.add-card-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto 60px !important;
+}
+.generl-form {
+  width: unset !important;
+}
+
+.add-card-input,
+.add-card-select {
+  min-width: 160px;
+  width: unset !important;
+}
+
+.add-card-option {
+  background-color: rgb(38, 38, 39);
+}

@@ -1,0 +1,14 @@
+.new-board-form {
+  max-width: 800px;
+
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.new-board-input {
+  margin-bottom: 16px;
+}
+
+.new-board-input::placeholder {
+  color: #999;
+}
