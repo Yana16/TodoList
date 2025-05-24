@@ -14,7 +14,7 @@ jobs:
     name: Lint Backend
     defaults:
       run:
-        working-directory: ./backend
+        working-directory: ./ToDo_List/backend
     steps:
       - uses: actions/checkout@v3
 
@@ -45,7 +45,7 @@ jobs:
     name: Lint Frontend
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory:  ./ToDo_List/frontend
     steps:
       - uses: actions/checkout@v3
 
