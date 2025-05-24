@@ -18,6 +18,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Show backend directory contents
+        run: ls -la
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -45,6 +48,9 @@ jobs:
         working-directory: ./frontend
     steps:
       - uses: actions/checkout@v3
+
+      - name: Show frontend directory contents
+        run: ls -la
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
