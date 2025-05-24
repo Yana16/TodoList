@@ -12,15 +12,14 @@ jobs:
   lint-backend:
     runs-on: ubuntu-latest
     name: Lint Backend
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Show repo root files
+      - name: Show backend directory contents
         run: ls -la
-
-      - name: Show backend folder files
-        run: ls -la backend
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -28,35 +27,30 @@ jobs:
           node-version: 18
 
       - name: Install backend dependencies
-        working-directory: ./backend
         run: npm install
 
       - name: Fix permissions for node_modules binaries (backend)
-        working-directory: ./backend
         run: chmod -R +x node_modules/.bin
 
       - name: Debug ESLint binary (backend)
-        working-directory: ./backend
         run: |
           ls -l node_modules/.bin/eslint
           ./node_modules/.bin/eslint --version
 
       - name: Run backend lint
-        working-directory: ./backend
         run: npm run lint
 
   lint-frontend:
     runs-on: ubuntu-latest
     name: Lint Frontend
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Show repo root files
+      - name: Show frontend directory contents
         run: ls -la
-
-      - name: Show frontend folder files
-        run: ls -la frontend
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -64,17 +58,15 @@ jobs:
           node-version: 18
 
       - name: Install frontend dependencies
-        working-directory: ./frontend
         run: npm install
 
       - name: Fix permissions for node_modules binaries (frontend)
-        working-directory: ./frontend
         run: chmod -R +x node_modules/.bin
 
       - name: Debug ESLint binary (frontend)
-        working-directory: ./frontend
         run: |
           ls -l node_modules/.bin/eslint
           ./node_modules/.bin/eslint --version
 
       - name: Run frontend lint
+        run: npm run lint
